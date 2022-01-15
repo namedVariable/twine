@@ -1,3 +1,5 @@
-# twine-somethingsmall
+# twine
 
-The first Twine story I made. It is very very short and was used as a tool to learn how to use it.
+These are the Twine stories I have made or are working on.
+
+https://namedvariable.github.io/twine/
