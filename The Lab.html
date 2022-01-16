@@ -9,45 +9,158 @@
 </head>
 <body>
 <tw-story><noscript><tw-noscript>JavaScript needs to be enabled to play The Lab.</tw-noscript></noscript></tw-story>
-<tw-storydata name="The Lab" startnode="1" creator="Twine" creator-version="2.3.16" ifid="84CF035D-2357-414D-81C7-B0134B65657E" zoom="1" format="Harlowe" format-version="3.2.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-passagedata pid="1" name="Start" tags="" position="600,25" size="100,100">In the beninging...
+<tw-storydata name="The Lab" startnode="1" creator="Twine" creator-version="2.3.16" ifid="84CF035D-2357-414D-81C7-B0134B65657E" zoom="1" format="Harlowe" format-version="3.2.3" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="footer" color="purple"></tw-tag><tw-passagedata pid="1" name="Start" tags="" position="425,100" size="100,100">In the beninging...
 
 [[Start-&gt;Asleep1]]
 
-(set: $lastPassage to &quot;&quot;)
-
 (set: $fire to (datamap: &quot;name&quot;, &quot;pyrokinesis&quot;, &quot;person&quot;, &quot;pyrokinetic&quot;, &quot;power&quot;, &quot;fire&quot;))
-
 (set: $water to (datamap: &quot;name&quot;, &quot;hydrokinesis&quot;, &quot;person&quot;, &quot;hydrokinetic&quot;, &quot;power&quot;, &quot;water&quot;))
 
+(set: $wrench to (datamap: &quot;name&quot;, &quot;wrench&quot;, &quot;description&quot;, &quot;The mighty wrench, it can be used to loosen certain things.&quot;, &quot;have&quot;, 0))
+(set: $screwdriver to (datamap: &quot;name&quot;, &quot;screwdriver&quot;, &quot;description&quot;, &quot;The handy screwdriver, it can be used to loosen certain other things.&quot;, &quot;have&quot;, 1))
+
 (set: $slept to 0)
-(set: $cellOpen to 0)</tw-passagedata><tw-passagedata pid="2" name="Asleep1" tags="" position="600,175" size="100,100">In the silence of the night, you dream of distant memories.
+(set: $cellOpen to 0)
+(set: $item to &quot;&quot;)
+(set: $lastPage to &quot;&quot;)</tw-passagedata><tw-passagedata pid="2" name="Asleep1" tags="" position="425,250" size="100,100">In the silence of the night, you dream of distant memories.
 
 I am a...
 
 (link: &quot;Pyrokinetic&quot;)[(set: $element to $fire)(go-to: &quot;I am a...&quot;)]
-(link: &quot;Hyrdrokinetic&quot;)[(set: $element to $water)(go-to: &quot;I am a...&quot;)]</tw-passagedata><tw-passagedata pid="3" name="I am a..." tags="" position="600,325" size="100,100">I am a (print: $element&#39;s person), I control (print: $element&#39;s power).
+(link: &quot;Hyrdrokinetic&quot;)[(set: $element to $water)(go-to: &quot;I am a...&quot;)]</tw-passagedata><tw-passagedata pid="3" name="I am a..." tags="" position="425,400" size="100,100">I am a (print: $element&#39;s person), I control (print: $element&#39;s power).
 
 [[This is not who I am-&gt;Asleep1]]
-(link: &quot;This is who I am&quot;)[(set: $element to $fire)(go-to: &quot;Asleep2&quot;)]</tw-passagedata><tw-passagedata pid="4" name="Asleep2" tags="" position="600,475" size="100,100">You crack open a weary eyelid, the lights aren&#39;t on yet.
+(link: &quot;This is who I am&quot;)[(set: $element to $fire)(go-to: &quot;Asleep2&quot;)]</tw-passagedata><tw-passagedata pid="4" name="Asleep2" tags="" position="425,550" size="100,100">You crack open a weary eyelid, the lights aren&#39;t on yet.
 
 [[Just five more minutes...-&gt;Sleep]]
-[[Wake up-&gt;Your Cell]]</tw-passagedata><tw-passagedata pid="5" name="Sleep" tags="" position="300,475" size="100,100">You keep sleeping. 
+[[Wake up-&gt;Your Cell]]</tw-passagedata><tw-passagedata pid="5" name="Sleep" tags="" position="125,550" size="100,100">You keep sleeping. 
 
 (if: $slept is 1)[(print: &quot;You feel the lights turn on.&quot;)](if: $slept is 2)[(print: &quot;Someone is hitting each of the doors one by one.&quot;)](if: $slept is 3)[(print:&quot;Your door is knocked on.&quot;)](if: $slept is 4)[(print: &quot;The serial knocker continues down the hall.&quot;)](if: $slept is 5) [(print: &quot;They are gone. You should probably wake up.&quot;)](if: $slept is &gt;= 6 and $slept &lt;= 10)[(print:&quot;Wake up.&quot;)](if: $slept is &gt;= 11)[[???]]
 
 [[This is nice...-&gt;Sleep]]
 [[Enough!-&gt;Your Cell]]
-(set: $slept to $slept + 1)</tw-passagedata><tw-passagedata pid="6" name="Your Cell" tags="" position="600,625" size="100,100">(if: $wokenUp is 0)[You decide to(if: $slept is &gt;= 6)[(print: &quot; finally&quot;)] wake up (if: $slept is &lt;= 1)[(print: &quot; early. The lights flicker on as you stand out of bed&quot;)].(if: $slept is &gt;= 1 and $slept is &lt;= 4)[(print: &quot; The sounds of others waking up echoes into your room as you pull yourself out of bed.&quot;)](if: $slept is &gt; 4)[(print: &quot; The sound of shuffling footsteps echoes into your room as you pull yourself out of bed.&quot;)]]
+(set: $slept to $slept + 1)</tw-passagedata><tw-passagedata pid="6" name="Your Cell" tags="" position="425,700" size="100,100">(if: $wokenUp is 0)[You decide to(if: $slept is &gt;= 6)[(print: &quot; finally&quot;)] wake up (if: $slept is &lt;= 1)[(print: &quot; early. The lights flicker on as you stand out of bed&quot;)].(if: $slept is &gt;= 1 and $slept is &lt;= 4)[(print: &quot; The sounds of others waking up echoes into your room as you pull yourself out of bed.&quot;)](if: $slept is &gt; 4)[(print: &quot; The sound of shuffling footsteps echoes into your room as you pull yourself out of bed.&quot;)]]
 
-You are in a your cell, a small white room with a (if: $cellOpen is 0)[[barred door]](else:)[barred door leading to a [[corridor-&gt;Harmless Cell Corridor]]]. Opposite your bed is a [[wardrobe]], next to that a [[mirror]].
+You are in a your cell, a small white room with a(if: $cellOpen is 1)[n ] (if: $cellOpen is 0)[[barred door]](if: $cellOpen is 1)[open barred door leading to a [[corridor-&gt;Harmless Cell Corridor]]]. Opposite your bed is a [[wardrobe]], next to that a [[mirror]].
 
-(set: $wokenUp to 1)</tw-passagedata><tw-passagedata pid="7" name="???" tags="" position="300,625" size="100,100">This isn&#39;t a sleeping simulator. Have fun in limbo.</tw-passagedata><tw-passagedata pid="8" name="wardrobe" tags="" position="450,775" size="100,100">
+This is a safe place to check your (link: &quot;inventory&quot;)[(set: $lastPage to &quot;Your Cell&quot;)(go-to: &quot;Inventory&quot;)].
 
-[[Done-&gt;Your Cell]]</tw-passagedata><tw-passagedata pid="9" name="mirror" tags="" position="600,775" size="100,100">
+(set: $wokenUp to 1)</tw-passagedata><tw-passagedata pid="7" name="???" tags="" position="125,700" size="100,100">This isn&#39;t a sleeping simulator. Have fun in limbo.</tw-passagedata><tw-passagedata pid="8" name="wardrobe" tags="" position="275,750" size="100,100">
 
-[[Done-&gt;Your Cell]]</tw-passagedata><tw-passagedata pid="10" name="barred door" tags="" position="450,625" size="100,100">You stand at the door to your cell, through the bars you see a few other subjects walking down the corridor. As you start to wonder why yours hasn&#39;t opened yet, it starts to slide open with a horrible grinding sound.
 
-(link: &quot;Done&quot;)[(set: $cellOpen to 1)(go-to: &quot;Your Cell&quot;)]</tw-passagedata><tw-passagedata pid="11" name="Harmless Cell Corridor" tags="" position="750,625" size="200,100">[[your cell-&gt;Your Cell]] </tw-passagedata></tw-storydata>
+[[Done-&gt;Your Cell]]</tw-passagedata><tw-passagedata pid="9" name="mirror" tags="" position="275,900" size="100,100">
+
+[[Done-&gt;Your Cell]]</tw-passagedata><tw-passagedata pid="10" name="barred door" tags="" position="275,600" size="100,100">You stand at the door to your cell, through the bars you see a few other subjects walking down the corridor. As you start to wonder why yours hasn&#39;t opened yet, it starts to slide open with a horrible grinding sound.
+
+(link: &quot;Done&quot;)[(set: $cellOpen to 1)(go-to: &quot;Your Cell&quot;)]</tw-passagedata><tw-passagedata pid="11" name="Harmless Cell Corridor" tags="" position="450,850" size="200,100">harmless cell corridor
+other cells, should eat first
+
+
+
+if eaten:
+	link cells 1,3,4 to search
+[[Harmless Cell 1]]
+[[Harmless Cell 2-&gt;Your Cell]] your cell
+[[Harmless Cell 3]]
+[[Harmless Cell 4]]
+
+[[Cell Block Corridor]]</tw-passagedata><tw-passagedata pid="12" name="Harmless Cell 1" tags="" position="425,1000" size="100,100">search room
+
+[[corridor-&gt;Harmless Cell Corridor]]</tw-passagedata><tw-passagedata pid="13" name="Harmless Cell 3" tags="" position="575,1000" size="100,100">search room or oc room
+
+[[corridor-&gt;Harmless Cell Corridor]]</tw-passagedata><tw-passagedata pid="14" name="Harmless Cell 4" tags="" position="575,700" size="100,100">person still asleep, could search through their stuff
+
+[[corridor-&gt;Harmless Cell Corridor]]</tw-passagedata><tw-passagedata pid="15" name="Cell Block Corridor" tags="" position="800,1500" size="100,200">
+[[Harmless Cell Corridor]] 
+[[Safe Cell Corridor]] 
+[[Moderate Cell Corridor]] 
+[[Dangerous Cell Corridor]] 
+
+[[Main Corridor]]</tw-passagedata><tw-passagedata pid="16" name="Safe Cell 2" tags="" position="425,1175" size="100,100">[[Safe Cell Corridor]]</tw-passagedata><tw-passagedata pid="17" name="Safe Cell 4" tags="" position="575,1175" size="100,100">[[Safe Cell Corridor]]</tw-passagedata><tw-passagedata pid="18" name="Safe Cell Corridor" tags="" position="450,1325" size="200,100">
+
+[[Safe Cell 1]]
+[[Safe Cell 2]]
+[[Safe Cell 3]]
+[[Safe Cell 4]]
+
+[[Cell Block Corridor]]</tw-passagedata><tw-passagedata pid="19" name="Safe Cell 1" tags="" position="425,1475" size="100,100">[[Safe Cell Corridor]]</tw-passagedata><tw-passagedata pid="20" name="Safe Cell 3" tags="" position="575,1475" size="100,100">[[Safe Cell Corridor]]</tw-passagedata><tw-passagedata pid="21" name="Moderate Cell 2" tags="" position="425,1650" size="100,100">[[Moderate Cell Corridor]]</tw-passagedata><tw-passagedata pid="22" name="Moderate Cell 4" tags="" position="575,1650" size="100,100">[[Moderate Cell Corridor]]</tw-passagedata><tw-passagedata pid="23" name="Moderate Cell Corridor" tags="" position="450,1800" size="200,100">
+
+[[Moderate Cell 1]]
+[[Moderate Cell 2]]
+[[Moderate Cell 3]]
+[[Moderate Cell 4]]
+
+[[Cell Block Corridor]]</tw-passagedata><tw-passagedata pid="24" name="Moderate Cell 1" tags="" position="425,1950" size="100,100">[[Moderate Cell Corridor]]</tw-passagedata><tw-passagedata pid="25" name="Moderate Cell 3" tags="" position="575,1950" size="100,100">[[Moderate Cell Corridor]]</tw-passagedata><tw-passagedata pid="26" name="Dangerous Cell 2" tags="" position="425,2125" size="100,100">[[Dangerous Cell Corridor]]</tw-passagedata><tw-passagedata pid="27" name="Dangerous Cell 4" tags="" position="575,2125" size="100,100">[[Dangerous Cell Corridor]]</tw-passagedata><tw-passagedata pid="28" name="Dangerous Cell Corridor" tags="" position="450,2275" size="200,100">
+
+[[Dangerous Cell 1]]
+[[Dangerous Cell 2]]
+[[Dangerous Cell 3]]
+[[Dangerous Cell 4]]
+
+[[Cell Block Corridor]]</tw-passagedata><tw-passagedata pid="29" name="Dangerous Cell 1" tags="" position="425,2425" size="100,100">[[Dangerous Cell Corridor]]</tw-passagedata><tw-passagedata pid="30" name="Dangerous Cell 3" tags="" position="575,2425" size="100,100">[[Dangerous Cell Corridor]]</tw-passagedata><tw-passagedata pid="31" name="Main Corridor" tags="" position="1100,1550" size="200,100">
+[[Main Corridor 2]]
+[[Testing Facilities Corridor]]
+[[Cells-&gt;Cell Block Corridor]]
+[[Medical Ward]]
+[[Subject Ameneties Block]]</tw-passagedata><tw-passagedata pid="32" name="Testing Facilities Corridor" tags="" position="1050,975" size="100,200">
+[[Main Corridor]] 
+[[Fire Test Chamber]]
+[[Light Test Chamber]]
+[[Water Test Chamber]]
+[[Air Test Chamber]]
+[[Nature Test Chamber]]
+[[Ice Test Chamber]]
+[[Sound Test Chamber]]
+[[Electricity Test Chamber]]
+[[Illusion Test Chamber]]
+[[Shapeshifting Test Chamber]]</tw-passagedata><tw-passagedata pid="33" name="Fire Test Chamber" tags="" position="1200,725" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="34" name="Light Test Chamber" tags="" position="1200,875" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="35" name="Water Test Chamber" tags="" position="1200,1025" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="36" name="Air Test Chamber" tags="" position="1200,1175" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="37" name="Nature Test Chamber" tags="" position="1200,1325" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="38" name="Ice Test Chamber" tags="" position="900,725" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="39" name="Sound Test Chamber" tags="" position="900,875" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="40" name="Electricity Test Chamber" tags="" position="900,1025" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="41" name="Illusion Test Chamber" tags="" position="900,1175" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="42" name="Shapeshifting Test Chamber" tags="" position="900,1325" size="100,100">[[Testing Facilities Corridor]] </tw-passagedata><tw-passagedata pid="43" name="Medical Ward" tags="" position="900,1825" size="100,200">[[Main Corridor]] 
+[[Bed 1]]
+[[Bed 2]]
+[[Bed 3]]
+[[Bed 4]]</tw-passagedata><tw-passagedata pid="44" name="Bed 1" tags="" position="750,1800" size="100,100">[[Medical Ward]] </tw-passagedata><tw-passagedata pid="45" name="Bed 2" tags="" position="1050,1800" size="100,100">[[Medical Ward]] </tw-passagedata><tw-passagedata pid="46" name="Bed 3" tags="" position="750,1950" size="100,100">[[Medical Ward]] </tw-passagedata><tw-passagedata pid="47" name="Bed 4" tags="" position="1050,1950" size="100,100">[[Medical Ward]] </tw-passagedata><tw-passagedata pid="48" name="Main Corridor 2" tags="" position="1675,1525" size="200,100">[[Security Corridor]]
+[[Staff Corridor]]
+[[Subject Facilities]]
+[[Food Hall]]
+[[Main Corridor]] </tw-passagedata><tw-passagedata pid="49" name="Security Corridor" tags="" position="1525,1325" size="100,100">
+[[Main Corridor 2]] 
+[[Armoury]]
+[[Training Room]]
+[[CCTV Room]]</tw-passagedata><tw-passagedata pid="50" name="Armoury" tags="" position="1375,1175" size="100,100">[[Security Corridor]]
+[[Training Room]]</tw-passagedata><tw-passagedata pid="51" name="Training Room" tags="" position="1525,1175" size="100,100">[[Security Corridor]]
+[[Armoury]]</tw-passagedata><tw-passagedata pid="52" name="CCTV Room" tags="" position="1375,1325" size="100,100">[[Security Corridor]]</tw-passagedata><tw-passagedata pid="53" name="Subject Facilities" tags="" position="1700,1825" size="100,200">[[Main Corridor 2]] 
+[[Gym]]
+[[Garden]]
+[[Library]]
+[[Swimming Pool]]
+[[Subject Courtyard]]</tw-passagedata><tw-passagedata pid="54" name="Gym" tags="" position="1575,1800" size="100,100">[[Subject Facilities]]</tw-passagedata><tw-passagedata pid="55" name="Garden" tags="" position="1875,1950" size="100,100">[[Subject Facilities]]</tw-passagedata><tw-passagedata pid="56" name="Library" tags="" position="1575,1950" size="100,100">[[Subject Facilities]]</tw-passagedata><tw-passagedata pid="57" name="Swimming Pool" tags="" position="1875,1800" size="100,100">[[Subject Facilities]]</tw-passagedata><tw-passagedata pid="58" name="Subject Courtyard" tags="" position="1675,2100" size="200,200">[[Subject Facilities]]
+[[Greenhouses]]</tw-passagedata><tw-passagedata pid="59" name="Food Hall" tags="" position="1950,1525" size="200,200">[[Kitchen]]
+[[Main Corridor 2]] </tw-passagedata><tw-passagedata pid="60" name="Kitchen" tags="" position="2200,1525" size="100,200">[[Food Hall]] </tw-passagedata><tw-passagedata pid="61" name="Staff Corridor" tags="" position="1725,1225" size="100,200">[[Main Corridor 2]]
+[[Breakroom]]
+[[Janitor&#39;s Closet]]
+[[Storage Room]]</tw-passagedata><tw-passagedata pid="62" name="Greenhouses" tags="" position="1925,2100" size="100,100">[[Subject Courtyard]] </tw-passagedata><tw-passagedata pid="63" name="Breakroom" tags="" position="1675,875" size="200,200">[[Staff Corridor]]
+
+[[Conference Room]]
+[[Office 1]]
+[[Office 2]]
+[[Office 3]]
+
+[[Female Staff]]
+[[Male Staff]]
+[[Unisex Staff]]
+</tw-passagedata><tw-passagedata pid="64" name="Janitor&#39;s Closet" tags="" position="1875,1350" size="100,100">[[Staff Corridor]]</tw-passagedata><tw-passagedata pid="65" name="Conference Room" tags="" position="1725,700" size="100,100">[[Breakroom]]</tw-passagedata><tw-passagedata pid="66" name="Storage Room" tags="" position="1875,1200" size="100,100">[[Staff Corridor]]</tw-passagedata><tw-passagedata pid="67" name="Office 1" tags="" position="1925,1000" size="100,100">[[Breakroom]]</tw-passagedata><tw-passagedata pid="68" name="Office 2" tags="" position="1925,700" size="100,100">[[Breakroom]]</tw-passagedata><tw-passagedata pid="69" name="Office 3" tags="" position="1925,850" size="100,100">[[Breakroom]]</tw-passagedata><tw-passagedata pid="70" name="Subject Ameneties Block" tags="" position="1225,1800" size="100,100">[[Main Corridor]] 
+[[Female Subject]]
+[[Male Subject]]
+[[Unisex Subject]]
+</tw-passagedata><tw-passagedata pid="71" name="Female Subject" tags="" position="1225,1950" size="100,100">[[Subject Ameneties Block]]</tw-passagedata><tw-passagedata pid="72" name="Male Subject" tags="" position="1375,1800" size="100,100">[[Subject Ameneties Block]]</tw-passagedata><tw-passagedata pid="73" name="Unisex Subject" tags="" position="1375,1950" size="100,100">[[Subject Ameneties Block]]</tw-passagedata><tw-passagedata pid="74" name="Female Staff" tags="" position="1525,700" size="100,100">[[Breakroom]]</tw-passagedata><tw-passagedata pid="75" name="Male Staff" tags="" position="1525,1000" size="100,100">[[Breakroom]]</tw-passagedata><tw-passagedata pid="76" name="Unisex Staff" tags="" position="1525,850" size="100,100">[[Breakroom]]</tw-passagedata><tw-passagedata pid="77" name="Item Acquired" tags="" position="675,100" size="100,100">You take the (print:$item&#39;s name).
+
+(link: &quot;Done&quot;)[(go-to: $lastPage)]</tw-passagedata><tw-passagedata pid="78" name="Item Description" tags="" position="800,100" size="100,100">(print: $item&#39;s description)
+
+(link: &quot;Done&quot;)[(go-to: $lastPage)]</tw-passagedata><tw-passagedata pid="79" name="Inventory" tags="" position="925,100" size="100,100">(either: &quot;You have:&quot;, &quot;You are carrying:&quot;, &quot;In your pockets you find:&quot;)
+
+(for: each _i, ...$allItems)[(if: _i&#39;s have is 1)[(print: (upperfirst: _i&#39;s name))&lt;br&gt;]]
+
+(link: &quot;Done&quot;)[(go-to: $lastPage)]</tw-passagedata><tw-passagedata pid="80" name="footer" tags="footer" position="550,100" size="100,100">
+(set: $allItems to (a: $wrench, $screwdriver))</tw-passagedata></tw-storydata>
 <script title="Twine engine code" data-main="harlowe">"use strict";var _slicedToArray=function(){return function(e,t){if(Array.isArray(e))return e;if(Symbol.iterator in Object(e))return function(e,t){var n=[],r=!0,a=!1,i=void 0;try{for(var o,s=e[Symbol.iterator]();!(r=(o=s.next()).done)&&(n.push(o.value),!t||n.length!==t);r=!0);}catch(e){a=!0,i=e}finally{try{!r&&s.return&&s.return()}finally{if(a)throw i}}return n}(e,t);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}!function(){
 /**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
